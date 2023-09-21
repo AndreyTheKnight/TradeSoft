@@ -1,0 +1,9 @@
+server {
+    listen        80;
+    server_name   domain2.local;
+    
+    location / {
+        include			conf.d/proxy_set_header.inc;
+        proxy_pass		http://apache/domain2/;
+    }
+}
