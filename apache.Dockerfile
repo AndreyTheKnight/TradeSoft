@@ -3,6 +3,6 @@
 FROM php:7.2.34-alpine
 RUN apk add --no-cache apache2 \
   && a2enmod php
+VOLUME /var/www
 EXPOSE 80
-VOLUME ["/etc/apache", "/var/log/apache", "/var/www"]
-CMD ["apache2" "-DFOREGROUND"]
+CMD ["httpd" "-DFOREGROUND"]
