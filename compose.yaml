@@ -1,0 +1,18 @@
+services:
+  nginx:
+    image: local/nginx
+    build: https://github.com/AndreyTheKnight/TradeSoft.git#main:nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - apache
+    volumes:
+      - /srv/nginx/conf:/etc/nginx:ro
+      - /srv/nginx/logs:/var/log/nginx:rw
+  apache:
+    image: local/apache
+    build: https://github.com/AndreyTheKnight/TradeSoft.git#main:apache
+    volumes:
+      - /srv/apache/conf:/etc/apache2:ro
+      - /srv/apache/logs:/var/log/apache2:rw
+      - /srv/www/html:/var/www/html:ro
