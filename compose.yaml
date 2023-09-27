@@ -2,6 +2,7 @@ services:
   nginx:
     image: local/nginx
     build: https://github.com/AndreyTheKnight/TradeSoft.git#main:nginx
+    restart: unless-stopped
     ports:
       - "80:80"
     depends_on:
@@ -13,6 +14,7 @@ services:
   apache:
     image: local/apache
     build: https://github.com/AndreyTheKnight/TradeSoft.git#main:apache
+    restart: unless-stopped
     volumes:
       - /srv/apache/conf:/etc/apache2:ro
       - /srv/apache/logs:/var/log/apache2:rw
@@ -20,6 +22,7 @@ services:
   mysql:
     image: local/mysql
     build: https://github.com/AndreyTheKnight/TradeSoft.git#main:mysql
+    restart: unless-stopped
     volumes:
       - /srv/mysql/conf:/etc/my.cnf.d:ro
       - /srv/mysql/logs:/var/log/mysql:rw
@@ -27,11 +30,13 @@ services:
   prometheus:
     image: local/prometheus
     build: https://github.com/AndreyTheKnight/TradeSoft.git#main:prometheus
+    restart: unless-stopped
     volumes:
       - /srv/prometheus/conf:/etc/prometheus:ro
   grafana:
     image: local/grafana
     build: https://github.com/AndreyTheKnight/TradeSoft.git#main:grafana
+    restart: unless-stopped
     ports:
       - "3000:3000"
     depends_on:
