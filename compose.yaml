@@ -42,4 +42,4 @@ services:
     depends_on:
       - prometheus
     volumes:
-      -  /srv/grafana/conf/grafana.ini:/etc/grafana.ini:ro
+      -  /srv/grafana/conf:/etc/grafana:ro
