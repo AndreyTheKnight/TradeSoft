@@ -1,7 +1,7 @@
 services:
   nginx:
-    image: local/nginx
-    build: https://github.com/AndreyTheKnight/TradeSoft.git#main:nginx
+    image: nginx:tradesoft
+    build: ./nginx
     restart: unless-stopped
     ports:
       - "80:80"
@@ -12,30 +12,30 @@ services:
       - /srv/nginx/conf:/etc/nginx:ro
       - /srv/nginx/logs:/var/log/nginx:rw
   apache:
-    image: local/apache
-    build: https://github.com/AndreyTheKnight/TradeSoft.git#main:apache
+    image: apache:tradesoft
+    build: ./apache
     restart: unless-stopped
     volumes:
       - /srv/apache/conf:/etc/apache2:ro
       - /srv/apache/logs:/var/log/apache2:rw
       - /srv/www/html:/var/www/html:ro
   mysql:
-    image: local/mysql
-    build: https://github.com/AndreyTheKnight/TradeSoft.git#main:mysql
+    image: mysql:tradesoft
+    build: ./mysql
     restart: unless-stopped
     volumes:
       - /srv/mysql/conf:/etc/my.cnf.d:ro
       - /srv/mysql/logs:/var/log/mysql:rw
       - /srv/mysql/data:/var/lib/mysql:rw
   prometheus:
-    image: local/prometheus
-    build: https://github.com/AndreyTheKnight/TradeSoft.git#main:prometheus
+    image: prometheus:tradesoft
+    build: ./prometheus
     restart: unless-stopped
     volumes:
       - /srv/prometheus/conf:/etc/prometheus:ro
   grafana:
-    image: local/grafana
-    build: https://github.com/AndreyTheKnight/TradeSoft.git#main:grafana
+    image: grafana:tradesoft
+    build: ./grafana
     restart: unless-stopped
     ports:
       - "3000:3000"
