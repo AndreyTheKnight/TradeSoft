@@ -8,7 +8,7 @@ services:
 #      - apache
 #      - mysql
     volumes:
-#      - /srv/nginx/conf:/etc/nginx
+      - /srv/nginx/conf:/etc/nginx
       - /srv/nginx/logs:/var/log/nginx
   apache:
     image: apache:tradesoft
