@@ -8,8 +8,8 @@ services:
       - apache
       - mysql
     volumes:
-      - /srv/nginx/conf:/etc/nginx
-      - /srv/nginx/logs:/var/log/nginx
+      - nginx-conf:/etc/nginx:ro
+      - nginx-logs:/var/log/nginx
   apache:
     image: apache:tradesoft
     build: ./apache
@@ -38,3 +38,21 @@ services:
       - prometheus
     volumes:
       -  /srv/grafana/conf:/etc/grafana
+      
+volumes:
+  nginx-conf:
+    driver: local
+    driver_opts:
+      device: /srv/nginx/conf
+  nginx-logs:
+    driver: local
+    driver_opts:
+      type: none
+      device: /srv/nginx/logs
+      o: bind
+  apache-conf:
+    driver: local
+    driver_opts:
+      type: none
+      device: /srv/apache/conf
+      o: bind
