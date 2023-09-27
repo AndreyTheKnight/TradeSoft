@@ -8,27 +8,27 @@ services:
       - apache
       - mysql
     volumes:
-      - /srv/nginx/conf:/etc/nginx:ro
-      - /srv/nginx/logs:/var/log/nginx:rw
+      - /srv/nginx/conf:/etc/nginx
+      - /srv/nginx/logs:/var/log/nginx
   apache:
     image: apache:tradesoft
     build: ./apache
     volumes:
-      - /srv/apache/conf:/etc/apache2:ro
-      - /srv/apache/logs:/var/log/apache2:rw
-      - /srv/www/html:/var/www/html:ro
+      - /srv/apache/conf:/etc/apache2
+      - /srv/apache/logs:/var/log/apache2
+      - /srv/www/html:/var/www/html
   mysql:
     image: mysql:tradesoft
     build: ./mysql
     volumes:
-      - /srv/mysql/conf:/etc/my.cnf.d:ro
-      - /srv/mysql/logs:/var/log/mysql:rw
-      - /srv/mysql/data:/var/lib/mysql:rw
+      - /srv/mysql/conf:/etc/my.cnf.d
+      - /srv/mysql/logs:/var/log/mysql
+      - /srv/mysql/data:/var/lib/mysql
   prometheus:
     image: prometheus:tradesoft
     build: ./prometheus
     volumes:
-      - /srv/prometheus/conf:/etc/prometheus:ro
+      - /srv/prometheus/conf:/etc/prometheus
   grafana:
     image: grafana:tradesoft
     build: ./grafana
@@ -37,4 +37,4 @@ services:
     depends_on:
       - prometheus
     volumes:
-      -  /srv/grafana/conf:/etc/grafana:ro
+      -  /srv/grafana/conf:/etc/grafana
