@@ -2,7 +2,6 @@ services:
   nginx:
     image: nginx:tradesoft
     build: ./nginx
-    restart: unless-stopped
     ports:
       - "80:80"
     depends_on:
@@ -14,7 +13,6 @@ services:
   apache:
     image: apache:tradesoft
     build: ./apache
-    restart: unless-stopped
     volumes:
       - /srv/apache/conf:/etc/apache2:ro
       - /srv/apache/logs:/var/log/apache2:rw
@@ -22,7 +20,6 @@ services:
   mysql:
     image: mysql:tradesoft
     build: ./mysql
-    restart: unless-stopped
     volumes:
       - /srv/mysql/conf:/etc/my.cnf.d:ro
       - /srv/mysql/logs:/var/log/mysql:rw
@@ -30,13 +27,11 @@ services:
   prometheus:
     image: prometheus:tradesoft
     build: ./prometheus
-    restart: unless-stopped
     volumes:
       - /srv/prometheus/conf:/etc/prometheus:ro
   grafana:
     image: grafana:tradesoft
     build: ./grafana
-    restart: unless-stopped
     ports:
       - "3000:3000"
     depends_on:
