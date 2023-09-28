@@ -1,0 +1,28 @@
+services:
+  apache:
+    image: apache:tradesoft
+    build: ./apache
+    volumes:
+      - apache-conf:/etc/apache2:ro
+      - apache-logs:/var/log/apache2
+      - www-html:/var/www/html:ro
+
+volumes:
+  apache-conf:
+    driver: local
+    driver_opts:
+      device: /srv/apache/conf
+      type: none
+      o: bind
+  apache-logs:
+    driver: local
+    driver_opts:
+      device: /srv/apache/logs
+      type: none
+      o: bind
+  www-html:
+    driver: local
+    driver_opts:
+      device: /srv/www/html
+      type: none
+      o: bind
