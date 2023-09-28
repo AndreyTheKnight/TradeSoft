@@ -3,12 +3,13 @@ services:
     image: prometheus:tradesoft
     build: ./prometheus
     volumes:
-      - prometheus-conf:/etc/prometheus
+      - /srv/prometheus/conf:/etc/prometheus
+#      - prometheus-conf:/etc/prometheus
 
-volumes:
-  prometheus-conf:
-    driver: local
-    driver_opts:
-      device: /srv/prometheus/conf
-      type: none
-      o: bind
+#volumes:
+#  prometheus-conf:
+#    driver: local
+#    driver_opts:
+#      device: /srv/prometheus/conf
+#      type: none
+#      o: bind
