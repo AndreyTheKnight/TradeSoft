@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for dir in /defconf/dir.list
+for dir in $(cat /defconf/dir.list)
 do
   if [ -z "$(ls -A "$dir")" ]
   then
