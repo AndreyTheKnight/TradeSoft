@@ -2,6 +2,9 @@
 
 FROM alpine
 RUN apk add --no-cache mysql
-VOLUME /etc/my.cnf.d /var/log/mysql /var/lib/mysql
+RUN mv /etc/my.cnf.d /etc/my.cnf.d.orig \
+  && mkdir /etc/my.cnf.d
+COPY --chmod=+x docker-entrypoint.sh /usr/local/bin
+ENTRYPOINT ["docker-entrypoint.sh"]
 EXPOSE 3306
 CMD ["mysqld"]
