@@ -8,9 +8,6 @@ RUN mv /etc/apache2 /etc/apache2.orig \
   && mkdir /etc/apache2 \
   && mv /var/www /var/www.orig \
   && mkdir /var/www
-VOLUME /etc/apache2 /var/log/apache2 /var/www
-EXPOSE 81
-EXPOSE 82
 COPY --chmod=755 docker-entrypoint.sh /usr/local/bin
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["httpd", "-DFOREGROUND"]
