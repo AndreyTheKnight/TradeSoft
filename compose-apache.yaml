@@ -5,7 +5,7 @@ services:
     volumes:
       - apache-conf:/etc/apache2
       - apache-logs:/var/log/apache2
-      - www-html:/var/www/html
+      - apache-www:/var/www
 
 volumes:
   apache-conf:
@@ -20,9 +20,9 @@ volumes:
       device: /srv/apache/logs
       type: none
       o: bind
-  www-html:
+  apache-www:
     driver: local
     driver_opts:
-      device: /srv/www/html
+      device: /srv/www
       type: none
       o: bind
