@@ -3,26 +3,29 @@ services:
     image: mysql:tradesoft
     build: ./mysql
     volumes:
-      - mysql-conf:/etc/my.cnf.d
-      - mysql-logs:/var/log/mysql
-      - mysql-data:/var/lib/mysql
+      - /srv/mysql/conf:/etc/my.cnf.d
+      - /srv/mysql/logs:/var/log/mysql
+      - /srv/mysql/data:/var/lib/mysql
+#      - mysql-conf:/etc/my.cnf.d
+#      - mysql-logs:/var/log/mysql
+#      - mysql-data:/var/lib/mysql
 
-volumes:
-  mysql-conf:
-    driver: local
-    driver_opts:
-      device: /srv/mysql/conf
-      type: none
-      o: bind
-  mysql-logs:
-    driver: local
-    driver_opts:
-      device: /srv/mysql/logs
-      type: none
-      o: bind
-  mysql-data:
-    driver: local
-    driver_opts:
-      device: /srv/mysql/data
-      type: none
-      o: bind
+#volumes:
+#  mysql-conf:
+#    driver: local
+#    driver_opts:
+#      device: /srv/mysql/conf
+#      type: none
+#      o: bind
+#  mysql-logs:
+#    driver: local
+#    driver_opts:
+#      device: /srv/mysql/logs
+#      type: none
+#      o: bind
+#  mysql-data:
+#    driver: local
+#    driver_opts:
+#      device: /srv/mysql/data
+#      type: none
+#      o: bind
