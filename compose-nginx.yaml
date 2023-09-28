@@ -13,9 +13,11 @@ volumes:
     driver: local
     driver_opts:
       device: /srv/nginx/conf
+      type: none
+      o: bind
   nginx-logs:
     driver: local
     driver_opts:
-      type: none
       device: /srv/nginx/logs
+      type: none
       o: bind
