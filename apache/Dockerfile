@@ -10,4 +10,6 @@ RUN mv /etc/apache2 /etc/apache2.orig \
   && mkdir /var/www
 COPY --chmod=+x docker-entrypoint.sh /usr/local/bin
 ENTRYPOINT ["docker-entrypoint.sh"]
+EXPOSE 81
+EXPOSE 82
 CMD ["httpd", "-DFOREGROUND"]
