@@ -1,0 +1,9 @@
+services:
+  nginx:
+    image: nginx:tradesoft
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - /srv/nginx/conf:/etc/nginx
+      - /srv/nginx/logs:/var/log/nginx
