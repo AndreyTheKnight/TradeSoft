@@ -1,31 +1,10 @@
 services:
   apache:
     image: apache:tradesoft
-    build: ./apache
+    build: 
+      context: ./apache
+      additional_contexts: .
     volumes:
       - /srv/apache/conf:/etc/apache2
       - /srv/apache/logs:/var/log/apache2
       - /srv/www/html:/var/www/html
-#      - apache-conf:/etc/apache2
-#      - apache-logs:/var/log/apache2
-#      - apache-www:/var/www
-
-#volumes:
-#  apache-conf:
-#   driver: local
-#    driver_opts:
-#      device: /srv/apache/conf
-#      type: none
-#      o: bind
-#  apache-logs:
-#    driver: local
-#    driver_opts:
-#      device: /srv/apache/logs
-#      type: none
-#      o: bind
-#  apache-www:
-#    driver: local
-#    driver_opts:
-#      device: /srv/www
-#      type: none
-#      o: bind
