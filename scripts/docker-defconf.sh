@@ -1,9 +1,8 @@
 #!/bin/sh
 
-mkdir /defconf
 for dir in "$@"
 do
-  mv "$dir" /defconf
-  mkdir "$dir"
+  mkdir -p /defconf"$dir"
+  mv "$dir"/* /defconf"$dir"/
   echo "$dir" >> /defconf/dir.list
 done
