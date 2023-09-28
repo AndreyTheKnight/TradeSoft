@@ -10,5 +10,5 @@ RUN mv /etc/apache2 /etc/apache2.orig \
 VOLUME /etc/apache2 /var/log/apache2 /var/www
 EXPOSE 81
 EXPOSE 82
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["httpd", "-DFOREGROUND"]
