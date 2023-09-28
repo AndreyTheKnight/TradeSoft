@@ -4,7 +4,6 @@ services:
     build: ./nginx
     depends_on:
       - apache
-      - mysql
     ports:
       - "80:80"
     volumes:
