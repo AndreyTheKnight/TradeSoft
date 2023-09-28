@@ -1,7 +1,10 @@
 services:
   nginx:
     image: nginx:tradesoft
-    build: ./nginx
+    build: 
+      context: ./nginx
+      additional_contexts:
+        scripts: ./scripts
     depends_on:
       - apache
     ports:
@@ -9,19 +12,3 @@ services:
     volumes:
       - /srv/nginx/conf:/etc/nginx
       - /srv/nginx/logs:/var/log/nginx
-#      - nginx-conf:/etc/nginx
-#      - nginx-logs:/var/log/nginx
-
-#volumes:
-#  nginx-conf:
-#    driver: local
-#    driver_opts:
-#      device: /srv/nginx/conf
-#      type: none
-#      o: bind
-#  nginx-logs:
-#    driver: local
-#    driver_opts:
-#      device: /srv/nginx/logs
-#      type: none
-#      o: bind
