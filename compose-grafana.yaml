@@ -1,0 +1,18 @@
+services:
+  grafana:
+    image: grafana:tradesoft
+    build: ./grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    volumes:
+      -  grafana-conf:/etc/grafana
+
+volumes:
+  grafana-conf:
+    driver: local
+    driver_opts:
+      device: /srv/grafana/conf
+      type: none
+      o: bind
