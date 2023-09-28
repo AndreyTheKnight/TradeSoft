@@ -2,6 +2,6 @@
 
 for dir in "$@"
 do
-  mv "$dir" "$dir".orig
+  mv "$dir" /defconf"$dir"
   mkdir "$dir"
 done
