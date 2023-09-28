@@ -3,9 +3,9 @@ services:
     image: apache:tradesoft
     build: ./apache
     volumes:
-      - apache-conf:/etc/apache2:ro
+      - apache-conf:/etc/apache2
       - apache-logs:/var/log/apache2
-      - www-html:/var/www/html:ro
+      - www-html:/var/www/html
 
 volumes:
   apache-conf:
