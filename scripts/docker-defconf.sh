@@ -1,5 +1,6 @@
 #!/bin/sh
 
+mkdir /defconf
 for dir in "$@"
 do
   mv "$dir" /defconf"$dir"
