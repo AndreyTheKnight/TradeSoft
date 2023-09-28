@@ -7,12 +7,13 @@ services:
     depends_on:
       - prometheus
     volumes:
-      - grafana-conf:/etc/grafana
+      - /srv/grafana/conf:/etc/grafana
+#      - grafana-conf:/etc/grafana
 
-volumes:
-  grafana-conf:
-    driver: local
-    driver_opts:
-      device: /srv/grafana/conf
-      type: none
-      o: bind
+#volumes:
+#  grafana-conf:
+#    driver: local
+#    driver_opts:
+#      device: /srv/grafana/conf
+#      type: none
+#      o: bind
