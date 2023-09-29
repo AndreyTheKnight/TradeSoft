@@ -13,4 +13,4 @@ RUN docker-config.sh /etc/apache2 /var/www/html
 ENTRYPOINT ["docker-entrypoint.sh"]
 EXPOSE 81
 EXPOSE 82
-CMD ["apache2ctl", "start", "-DFOREGROUND"]
+CMD ["apache2ctl", "-D", "FOREGROUND"]
