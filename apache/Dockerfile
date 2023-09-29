@@ -18,4 +18,4 @@ COPY --from=scripts --chmod=555 docker-* /usr/local/bin
 RUN docker-config.sh /etc/apache2 /var/www/html
 ENTRYPOINT ["docker-entrypoint.sh"]
 EXPOSE 80
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+CMD ["chroot", "--userspec=www-data", "/", "apache2ctl", "-D", "FOREGROUND"]
