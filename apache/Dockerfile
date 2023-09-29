@@ -9,7 +9,7 @@ COPY domain1.conf domain2.conf /etc/apache2/sites-available
 COPY index.php /var/www/html/domain1
 COPY index.php /var/www/html/domain2
 RUN a2enmod php7.3 \
-  && a2dissie 000-default \
+  && a2dissite 000-default \
   && a2ensite domain1 \
   && a2ensite domain2
 COPY --from=scripts --chmod=555 docker-* /usr/local/bin
