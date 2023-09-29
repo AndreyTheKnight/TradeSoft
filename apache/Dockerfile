@@ -1,7 +1,11 @@
 # syntax=docker/dockerfile:1
 
-FROM php:7.2.34-alpine
-RUN apk add --no-cache apache2
+FROM debian:10-slim
+RUN apt-get update && apt-get install -y \
+  apache2 \
+  libapache2-mod-php7.3 \
+  php7.3
+  && a2enmod php7.3
 COPY global.conf domain?.conf /etc/apache2/conf.d/
 COPY index.php /var/www/html/
 COPY --from=scripts --chmod=555 docker-* /usr/local/bin
