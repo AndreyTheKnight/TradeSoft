@@ -2,10 +2,8 @@
 
 FROM alpine
 RUN apk add --no-cache mysql
-RUN apk add --no-cache su-exec
-RUN mkdir /config/ \
-  && mv /etc/my.cnf.d /config/
-COPY --chmod=555 docker-entrypoint.sh /usr/local/bin
+COPY --from=scripts --chmod=555 docker-* /usr/local/bin
+RUN docker-config.sh /etc/my.cnf.d
 ENTRYPOINT ["docker-entrypoint.sh"]
 EXPOSE 3306
-CMD ["mysqld"]
+CMD ["mysqld_safe"]
