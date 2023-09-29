@@ -4,6 +4,8 @@ FROM alpine
 RUN apk add --no-cache grafana
 RUN apk add --no-cache su-exec
 RUN chown grafana:grafana /usr/share/grafana
+RUN mkdir /etc/grafana \
+  && mv /etc/grafana.ini /etc/grafana/
 COPY --from=scripts --chmod=555 docker-* /usr/local/bin
 RUN docker-config.sh /etc/grafana
 ENTRYPOINT ["docker-entrypoint.sh"]
