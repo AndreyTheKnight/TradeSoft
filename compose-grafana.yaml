@@ -7,7 +7,5 @@ services:
         scripts: ./scripts
     ports:
       - "3000:3000"
-    depends_on:
-      - prometheus
     volumes:
       - /srv/grafana/conf:/etc/grafana
