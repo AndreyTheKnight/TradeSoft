@@ -1,10 +1,7 @@
 services:
   apache:
     image: apache:tradesoft
-    build: 
-      context: ./apache
-      additional_contexts:
-        scripts: ./scripts
+    build: ./apache
     volumes:
       - /srv/apache/conf:/etc/apache2
       - /srv/apache/logs:/var/log/apache2
