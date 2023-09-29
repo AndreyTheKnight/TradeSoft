@@ -6,8 +6,8 @@ RUN apt-get update && apt-get install -y \
   libapache2-mod-php7.3 \
   php7.3
 COPY domain1.conf domain2.conf /etc/apache2/sites-available
-COPY index.php /var/www/html/domain1
-COPY index.php /var/www/html/domain2
+COPY index.php /var/www/html/domain1/
+COPY index.php /var/www/html/domain2/
 RUN a2enmod php7.3 \
   && a2dissite 000-default \
   && a2ensite domain1 \
