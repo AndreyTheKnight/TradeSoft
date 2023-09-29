@@ -2,11 +2,10 @@
 
 FROM alpine
 RUN apk add --no-cache nginx
-RUN apk add --no-cache su-exec
 COPY proxy_set_header.inc /etc/nginx/
 COPY domain?.conf /etc/nginx/http.d/
 COPY --from=scripts --chmod=555 docker-* /usr/local/bin
 RUN docker-config.sh /etc/nginx
 ENTRYPOINT ["docker-entrypoint.sh"]
 EXPOSE 80
-CMD ["su-exec", "nginx", "nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
