@@ -8,6 +8,10 @@ RUN apt-get update && apt-get install -y \
 COPY global.conf /etc/apache2/conf-available/
 COPY domain1.conf domain2.conf /etc/apache2/sites-available
 COPY index.php /var/www/html/
+RUN a2enmod php7.3 \
+  && a2enconf global \
+  && a2ensite domain1 \
+  && a2ensite domain2
 COPY --from=scripts --chmod=555 docker-* /usr/local/bin
 RUN docker-config.sh /etc/apache2 /var/www/html
 ENTRYPOINT ["docker-entrypoint.sh"]
