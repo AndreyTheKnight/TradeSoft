@@ -1,10 +1,10 @@
 #!/bin/sh
 
-for dir in $(cat /defconf/dir.list)
+for dir in $(cat /config/dir.list)
 do
   if [ -z "$(ls -A "$dir")" ]
   then
-    mv /defconf"$dir"/* "$dir"/
+    mv /config"$dir"/* "$dir"/
   fi
 done
 exec "$@"
