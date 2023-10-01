@@ -5,5 +5,7 @@ services:
       context: ./prometheus
       additional_contexts:
         scripts: ./scripts
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - /srv/prometheus/conf:/etc/prometheus
