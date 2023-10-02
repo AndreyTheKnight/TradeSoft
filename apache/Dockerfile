@@ -14,8 +14,7 @@ RUN a2enmod php7.3 \
   && a2dissite 000-default \
   && a2ensite domain1 \
   && a2ensite domain2
-COPY --from=scripts --chmod=555 docker-* /usr/local/bin
-RUN docker-config.sh /etc/apache2 /var/www/html
-ENTRYPOINT ["docker-entrypoint.sh"]
+COPY --from=scripts --chmod=750 docker-* /usr/local/bin
+RUN docker-defconf-backup.sh /etc/apache2 /var/www/html
 EXPOSE 80
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+ENTRYPOINT ["docker-entrypoint.sh"]
