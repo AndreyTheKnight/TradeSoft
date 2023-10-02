@@ -14,8 +14,8 @@ RUN a2enmod php7.3 \
   && a2dissite 000-default \
   && a2ensite domain1 \
   && a2ensite domain2
-COPY --chmod=750 docker-entrypoint.sh /usr/local/bin
-COPY --from=scripts --chmod=750 docker-* /usr/local/bin
+COPY --chmod=500 docker-entrypoint.sh /usr/local/bin
+COPY --from=scripts --chmod=500 docker-* /usr/local/bin
 RUN docker-defconf-backup.sh /etc/apache2 /var/www/html
 VOLUME ["/etc/apache2", "/var/log/apache2", "/var/www/html"]
 EXPOSE 80
