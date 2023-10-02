@@ -8,4 +8,4 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - /srv/grafana/conf:/etc/grafana
+      - /srv/grafana:/usr/share/grafana
