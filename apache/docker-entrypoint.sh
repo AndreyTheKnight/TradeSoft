@@ -2,8 +2,8 @@
 
 docker-defconf-init.sh
 
-exec apache2ctl -D FOREGROUND
+#exec apache2ctl -D FOREGROUND
 
-#apache2ctl start
-#trap "apache2ctl -k stop" TERM
-#read
+apache2ctl start
+trap "apache2ctl -k stop" TERM
+read
