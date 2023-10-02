@@ -2,10 +2,10 @@
 
 FROM alpine
 RUN apk add --no-cache mysql
-RUN mysql_install_db --datadir=/var/lib/mysql
-RUN mkdir /run/mysqld
-COPY --from=scripts --chmod=555 docker-* /usr/local/bin
-RUN docker-config.sh /etc/my.cnf.d /var/lib/mysql
-ENTRYPOINT ["docker-entrypoint.sh"]
+RUN apk add --no-cache su-exec
+COPY --chmod=500 docker-entrypoint.sh /usr/local/bin
+COPY --from=scripts --chmod=500 docker-* /usr/local/bin
+RUN docker-defconf-backup.sh /etc/my.cnf.d /var/lib/mysql
+VOLUME ["/etc/my.cnf.d", "/var/lib/mysql", "/var/log/mysql"]
 EXPOSE 3306
-CMD ["mysqld", "--user=root", "--log-error=/var/log/mysql/error.log"]
+ENTRYPOINT ["docker-entrypoint.sh"]
