@@ -2,9 +2,9 @@
 
 FROM alpine
 RUN apk add --no-cache prometheus
-RUN echo "- targets: ['host.docker.internal:9100']" >> /etc/prometheus/prometheus.yml
-COPY --from=scripts --chmod=555 docker-* /usr/local/bin
-RUN docker-config.sh /etc/prometheus
-ENTRYPOINT ["docker-entrypoint.sh"]
+COPY --chmod=500 docker-entrypoint.sh /usr/local/bin
+COPY --from=scripts --chmod=500 docker-* /usr/local/bin
+RUN docker-defconf-backup.sh /etc/prometheus
+VOLUME ["/etc/prometheus"]
 EXPOSE 9090
-CMD ["prometheus", "--config.file=/etc/prometheus/prometheus.yml"]
+ENTRYPOINT ["docker-entrypoint.sh"]
