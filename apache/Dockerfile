@@ -19,5 +19,4 @@ COPY --from=scripts --chmod=750 docker-* /usr/local/bin
 RUN docker-defconf-backup.sh /etc/apache2 /var/www/html
 VOLUME ["/etc/apache2", "/var/log/apache2", "/var/www/html"]
 EXPOSE 80
-STOPSIGNAL WINCH
 ENTRYPOINT ["docker-entrypoint.sh"]
